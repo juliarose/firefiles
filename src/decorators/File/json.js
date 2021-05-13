@@ -2,14 +2,15 @@ const FileDecorator = require('./');
 
 class JSONFileDecorator extends FileDecorator {
     
-    constructor(file, replacer, space) {
+    constructor(file, options = {}) {
         super(file);
-        this.replacer = replacer || null;
-        this.space = space || null;
+        this.reviver = options.reviver || null;
+        this.replacer = options.replacer || null;
+        this.space = options.space || null;
     }
     
     async read() {
-        return JSON.parse(await this.file.read());
+        return JSON.parse(await this.file.read(), this.reviver);
     }
     
     async write(data) {
