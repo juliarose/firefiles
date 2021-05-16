@@ -8,7 +8,7 @@ const {
     JSONFileDecorator,
     Utf8FileDecorator,
     EncryptedFileDecorator
-} = require('fire-files');
+} = require('firefiles');
 
 function createEncryptedJSONFile(filepath, password) {
     return new JSONFileDecorator(
