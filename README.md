@@ -1,4 +1,4 @@
-# fire-files
+# firefiles
 
 Simple and flexible file management.
 
