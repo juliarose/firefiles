@@ -23,18 +23,21 @@ function createEncryptedJSONFile(filepath, password) {
     const password = 'VerySecretP4ssw0rd';
     // create the file
     const file = createEncryptedJSONFile(filepath, password);
+    // some json data we want to keep secret
+    const json = {
+        user_id: 1,
+        message: 'i love tokyo'
+    };
     
     // will stringify, encrypt, and write this data to file
-    await file.write({
-        secret: 'i love tokyo'
-    });
+    await file.write(json);
     console.log('Data written to', file.path);
     
     // will read from the file and decrypt it,
     // converting it back into an object
-    const { secret } = await file.read();
+    const { message } = await file.read();
     
-    console.log(secret);
+    console.log(message);
     // i love tokyo
     
     // delete this
